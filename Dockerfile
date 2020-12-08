@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:10.23
 COPY . .
 RUN npm install \
     && npm run build
