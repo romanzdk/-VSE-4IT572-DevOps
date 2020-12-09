@@ -24,7 +24,7 @@ jobs:
         - attach_workspace:
            at: .
         - run:
-           command: ansible-playbook ansible/ec2_deploy.yml --vault-password-file get_vault_pass.sh --key-file eshop-key-pair.pem
+           command: ansible-playbook ansible/ec2_deploy.yml
 
 workflows:
   version: 2.1
