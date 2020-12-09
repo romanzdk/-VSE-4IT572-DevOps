@@ -1,15 +1,12 @@
 vse: &vse
   docker:
-    - image: circleci/node:8.11.3
+    - image: romanzdk/new-eshop:latest
 
 version: 2.1
 jobs:
   build:
     <<: *vse
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "91:e0:ff:66:5e:33:1c:08:f9:17:9e:ab:6a:04:3e:49"
       - checkout
       - run: npm install
       - run: npm run test
@@ -21,6 +18,9 @@ jobs:
   deploy:
      <<: *vse
      steps:
+        - add_ssh_keys:
+            fingerprints:
+              - "91:e0:ff:66:5e:33:1c:08:f9:17:9e:ab:6a:04:3e:49"
         - attach_workspace:
            at: .
         - run:
