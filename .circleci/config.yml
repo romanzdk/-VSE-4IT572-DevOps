@@ -7,6 +7,9 @@ jobs:
   build:
     <<: *vse
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "91:e0:ff:66:5e:33:1c:08:f9:17:9e:ab:6a:04:3e:49"
       - checkout
       - run: npm install
       - run: npm run test
@@ -21,7 +24,7 @@ jobs:
         - attach_workspace:
            at: .
         - run:
-           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+           command: ansible-playbook ansible/ec2_deploy.yml --vault-password-file ./.circleci/get_vault_pass.sh
 
 workflows:
   version: 2.1
