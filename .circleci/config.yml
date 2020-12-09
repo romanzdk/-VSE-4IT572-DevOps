@@ -24,7 +24,7 @@ jobs:
         - attach_workspace:
            at: .
         - run:
-           command: ansible-playbook ansible/ec2_deploy.yml --vault-password-file ./.circleci/get_vault_pass.sh
+           command: ansible-playbook ansible/ec2_deploy.yml --vault-password-file .circleci/get_vault_pass.sh
 
 workflows:
   version: 2.1
