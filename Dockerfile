@@ -13,3 +13,4 @@ ENTRYPOINT npm run start
 # RUN pip3 install --no-cache --upgrade pip setuptools
 # RUN apk add --update ansible
 # RUN pip install boto
+# RUN chmod 777 get_vault_pass.sh
