@@ -60,6 +60,7 @@
       poll: 0
       become: yes
     - wait_for:
+      timeout: 120
       port: 80
 
 - name: Terminate instances
@@ -68,4 +69,5 @@
     - name: Terminate instances that were previously launched
       ec2:
         state: 'absent'
+        region: us-east-1
         instance_ids: '{{ ec2.instance_ids }}'
