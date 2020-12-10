@@ -1,3 +1,12 @@
+- name: Terminate instances
+  hosts: localhost
+  tasks:
+    - name: Terminate instances that were previously launched
+      ec2:
+        state: 'absent'
+        region: us-east-1
+        instance_ids: '{{ ec2.instance_ids }}'
+
 - name: Deploy to EC2
   hosts: localhost
   connection: local
@@ -62,12 +71,3 @@
     - wait_for:
         timeout: 120
         port: 80
-
-- name: Terminate instances
-  hosts: localhost
-  tasks:
-    - name: Terminate instances that were previously launched
-      ec2:
-        state: 'absent'
-        region: us-east-1
-        instance_ids: '{{ ec2.instance_ids }}'
