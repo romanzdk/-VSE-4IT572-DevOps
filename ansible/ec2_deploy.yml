@@ -5,7 +5,7 @@
   tasks:
     - name: Launch EC2 instance
       ec2:
-        instance_type: t2.medium
+        instance_type: t2.small
         image: ami-0885b1f6bd170450c
         region: us-east-1
         key_name: eshop-key-pair
@@ -56,8 +56,8 @@
       become: yes
     - name: Run docker with eshop
       shell: docker run -p 80:3000 myeshop
-      async: 150
-      poll: 15
+      async: 300
+      poll: 60
       become: yes
     - wait_for: delay=60 timeout=600
       port: 80
