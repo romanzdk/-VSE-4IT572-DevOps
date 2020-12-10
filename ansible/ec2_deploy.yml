@@ -59,5 +59,13 @@
       async: 300
       poll: 0
       become: yes
-    - wait_for: delay=60 timeout=600
+    - wait_for:
       port: 80
+
+- name: Terminate instances
+  hosts: localhost
+  tasks:
+    - name: Terminate instances that were previously launched
+      amazon.aws.ec2:
+        state: 'absent'
+        instance_ids: '{{ ec2.instance_ids }}'
