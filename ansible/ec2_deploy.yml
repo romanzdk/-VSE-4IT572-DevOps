@@ -59,7 +59,8 @@
       async: 300
       poll: 0
       become: yes
-    - wait_for: timeout=120
+    - wait_for:
+      timeout: 120
       port: 80
 
 - name: Terminate instances
