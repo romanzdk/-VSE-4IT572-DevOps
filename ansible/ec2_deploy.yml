@@ -5,6 +5,9 @@
     - name: Terminate Instances
       ec2_instance_facts:
         region: us-east-1
+        aws_access_key: '{{ access_key }}'
+        aws_secret_key: '{{ secret_key }}'
+        security_token: '{{ session_token }}'
       register: ec2_info
  
     - name: displaying output
