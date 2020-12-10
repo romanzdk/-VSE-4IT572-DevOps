@@ -1,6 +1,6 @@
 vse: &vse
   docker:
-    - image: romanzdk/new-eshop:latest
+    - image: romanzdk/circleci-my:latest
 
 version: 2.1
 jobs:
@@ -18,13 +18,15 @@ jobs:
   deploy:
      <<: *vse
      steps:
+        - checkout
         - add_ssh_keys:
             fingerprints:
               - "91:e0:ff:66:5e:33:1c:08:f9:17:9e:ab:6a:04:3e:49"
+        - run: chmod 777 get_vault_pass.sh && chmod 400 eshop-key-pair.pem
         - attach_workspace:
            at: .
         - run:
-           command: ansible-playbook ansible/ec2_deploy.yml --user ubuntu
+           command: ansible-playbook ansible/ec2_deploy.yml --user ubuntu --key-file eshop-key-pair.pem
 
 workflows:
   version: 2.1
