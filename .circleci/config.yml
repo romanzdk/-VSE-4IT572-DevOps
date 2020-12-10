@@ -26,7 +26,7 @@ jobs:
            at: .
         - run: chmod 777 get_vault_pass.sh
         - run:
-           command: ansible-playbook ansible/ec2_deploy.yml --vault-password-file get_vault_pass.sh --user ubuntu
+           command: ansible-playbook -vvv ansible/ec2_deploy.yml --vault-password-file get_vault_pass.sh --user ubuntu
 
 workflows:
   version: 2.1
