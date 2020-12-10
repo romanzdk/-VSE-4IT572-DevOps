@@ -12,8 +12,7 @@ ENTRYPOINT npm run start
 # RUN python3 -m ensurepip
 # RUN pip3 install --no-cache --upgrade pip setuptools
 # RUN apk add --update ansible
-# RUN apk add 
+# RUN apk add openssh-client
 # RUN pip install boto
 # RUN chmod 777 get_vault_pass.sh
-# EXPOSE 22
 # ENTRYPOINT [ "/bin/sh" ]
