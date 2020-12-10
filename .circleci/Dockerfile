@@ -5,5 +5,5 @@ RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip setuptools
 RUN apk add --update ansible
 RUN apk add openssh-client
-RUN pip install boto boto3
+RUN pip3 install boto boto3
 ENTRYPOINT [ "/bin/sh" ]
