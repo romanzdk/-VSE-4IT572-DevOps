@@ -1,4 +1,4 @@
-- name: Terminate all EC2 instances
+- name: Deploy to EC2
   hosts: localhost
   connection: local
   tasks:
@@ -19,11 +19,6 @@
         wait: yes
       with_items: "{{ec2_info.instances}}"
 
-- name: Deploy to EC2
-  hosts: localhost
-  connection: local
-
-  tasks:
     - name: Launch EC2 instance
       ec2:
         instance_type: t2.small
