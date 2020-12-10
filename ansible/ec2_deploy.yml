@@ -14,9 +14,9 @@
         wait: yes
         count: 1
         group: eshop
-        aws_access_key: 'ASIA2YBF2J47BGCB3FGO'
-        aws_secret_key: '3WZnrYjfNQ7ettp/ZbMHb+bjxhgsFRNIWLbs+KBU'
-        security_token: 'FwoGZXIvYXdzEOr//////////wEaDNg02lwwBG+6b3TRQyLBATckGyGzT4pxRitMkzR4Zxt8GeioX0k6f+Lltl7je/A3h5nclc/0shAlkdkbP14tgtctyiOFxo8PpwEpclgs63/2b6xV4Iwei5DrBuadU1o2B9hteGCT8kRv08FDFB1i5p31Cx55wS2RzrFlkw3GOECCTAKn70beY+ZXyqRjO1Mq1yCvPeWWjC6Mggb18HMdYGE/nf8gNvKcZcNxvQSYxvdYwsDpfr0TFxBqxVVh0IMv3bj85Zgtq/thuI6TWjH3fB8oq63H/gUyLYyVh9c8Bpw9Z+JA3AWTnfQzo7stKJnWKlQjHTv5jS458BlHzR6b3W39UKIFaw=='
+        aws_access_key: '{{ access_key }}'
+        aws_secret_key: '{{ secret_key }}'
+        security_token: '{{ session_token }}'
       register: ec2
 
     - name: Add instance host to group
@@ -56,7 +56,7 @@
       become: yes
     - name: Run docker with eshop
       shell: docker run -p 80:3000 myeshop
-      async: 90
+      async: 150
       poll: 15
       become: yes
     - wait_for: delay=60 timeout=600
